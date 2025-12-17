@@ -1,17 +1,29 @@
 namespace OOPBasics
 {
     public class Person
-    {
-        public string Name {get;set;}
-        public int Age {get;set;}
+    {    
+        private string name;
+        private int age;
 
-        // Constructor
         public Person(string name, int age)
         {
-            Name = name;
-            Age = age;
+            this.name = name;
+            this.age = age;
         }
+        public string Name{
+            get { return name; }
+        }
+        public int Age {
+            get { return age; }
+            set
+            {
+                if (value > 0)
+                {
+                    age=value; //blocked negative age
+                }
+            }
 
+        }
         public void Introduce()
         {
             Console.WriteLine($"Hi, my name is {Name} and I am {Age} years old.");
