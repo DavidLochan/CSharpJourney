@@ -24,7 +24,7 @@ namespace OOPBasics
             }
 
         }
-        public void Introduce()
+        public virtual void Introduce()
         {
             Console.WriteLine($"Hi, my name is {Name} and I am {Age} years old.");
         }

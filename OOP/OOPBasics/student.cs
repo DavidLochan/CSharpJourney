@@ -11,6 +11,13 @@ namespace OOPBasics
         {
             RollNumber = rollNumber;
         }
+        public override void Introduce()
+{
+    Console.WriteLine(
+        $"Hi, my name is {Name}, I am {Age} years old, and my roll number is {RollNumber}."
+    );
+}
+
 
         public void Study()
         {
