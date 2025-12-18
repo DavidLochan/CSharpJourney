@@ -1,6 +1,6 @@
 namespace OOPBasics
 {
-    public class Person
+    public abstract class Person // abstract
     {    
         private string name;
         private int age;
@@ -24,9 +24,9 @@ namespace OOPBasics
             }
 
         }
-        public virtual void Introduce()
-        {
-            Console.WriteLine($"Hi, my name is {Name} and I am {Age} years old.");
-        }
+        public abstract void Introduce();
+        // {
+        //     Console.WriteLine($"Hi, my name is {Name} and I am {Age} years old."); // not allowed in abstract
+        // } 
     }
 }
