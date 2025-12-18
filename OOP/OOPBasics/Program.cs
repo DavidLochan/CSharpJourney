@@ -10,7 +10,10 @@ namespace OOPBasics
             // p1.Introduce();
 
             Person s1 = new Student("David", 22, 202201132);
-            s1.Introduce();   
+            s1.Introduce();   // polymorphism (Person reference)
+
+            IStudy s = new Student("David", 22, 202201132);
+            s.Study();       // interface reference
       
         }
     }

@@ -2,7 +2,7 @@ using System;
 
 namespace OOPBasics
 {
-    public class Student : Person
+    public class Student : Person, IStudy
     {
         public int RollNumber { get; set; }
 
