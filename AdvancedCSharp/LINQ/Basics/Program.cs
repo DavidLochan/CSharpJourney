@@ -4,6 +4,7 @@ class Program
 {
     static void Main()
     {
-        WhereSelect.Run();
+        //WhereSelect.Run();
+        FirstSingleAnyAll.Run();
     }
 }
