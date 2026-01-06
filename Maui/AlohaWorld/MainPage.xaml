@@ -4,19 +4,29 @@
     x:Class="AlohaWorld.MainPage">
 
     <VerticalStackLayout
-        Spacing="20"
-        Padding="30"
-        VerticalOptions="Center">
+    Spacing="20"
+    Padding="30"
+    VerticalOptions="Center">
 
-        <Label
-            x:Name="MessageLabel"
-            Text="Hello, World!"
-            FontSize="32"
-            HorizontalOptions="Center" />
+    <Label
+        Text="Type something 👇"
+        FontSize="24"
+        HorizontalOptions="Center" />
 
-        <Button
-            Text="Click me"
-            Clicked="OnButtonClicked" />
+    <Entry
+        x:Name="NameEntry"
+        Placeholder="Enter your name"
+        HorizontalOptions="Fill" />
 
-    </VerticalStackLayout>
+    <Button
+        Text="Show Greeting"
+        Clicked="OnShowGreetingClicked" />
+
+    <Label
+        x:Name="ResultLabel"
+        FontSize="22"
+        TextColor="LightGreen"
+        HorizontalOptions="Center" />
+
+</VerticalStackLayout>
 </ContentPage>

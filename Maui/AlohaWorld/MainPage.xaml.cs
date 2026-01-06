@@ -2,16 +2,21 @@
 
 public partial class MainPage : ContentPage
 {
-    int count = 0;
-
     public MainPage()
     {
         InitializeComponent();
     }
 
-    private void OnButtonClicked(object sender, EventArgs e)
+    private async void OnShowGreetingClicked(object sender, EventArgs e)
+{
+    var name = NameEntry.Text;
+
+    if (string.IsNullOrWhiteSpace(name))
     {
-        count++;
-        MessageLabel.Text = $"Button clicked {count} times";
+        ResultLabel.Text = "Please enter your name ";
+        return;
     }
+
+    await Navigation.PushAsync(new GreetingPage(name));
+}
 }
