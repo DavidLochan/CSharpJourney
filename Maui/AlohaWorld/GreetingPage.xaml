@@ -6,19 +6,21 @@
     Title="Greeting">
 
     <VerticalStackLayout
-        Spacing="20"
-        Padding="30"
-        VerticalOptions="Center">
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Spacing="20">
 
         <Label
             x:Name="GreetingLabel"
-            FontSize="28"
+            Text="Hello 👋"
+            FontSize="26"
             TextColor="LightGreen"
             HorizontalOptions="Center" />
 
         <Button
             Text="Go Back"
-            Clicked="OnBackClicked" />
+            Clicked="OnGoBackClicked" />
+
     </VerticalStackLayout>
 
 </ContentPage>

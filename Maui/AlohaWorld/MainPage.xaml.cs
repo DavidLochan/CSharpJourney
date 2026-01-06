@@ -9,14 +9,9 @@ public partial class MainPage : ContentPage
 
     private async void OnShowGreetingClicked(object sender, EventArgs e)
 {
-    var name = NameEntry.Text;
-
-    if (string.IsNullOrWhiteSpace(name))
-    {
-        ResultLabel.Text = "Please enter your name ";
+    if (string.IsNullOrWhiteSpace(NameEntry.Text))
         return;
-    }
 
-    await Navigation.PushAsync(new GreetingPage(name));
+    await Shell.Current.GoToAsync(nameof(GreetingPage));
 }
 }
