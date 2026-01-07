@@ -20,9 +20,10 @@ public partial class MainPage : ContentPage
         Tasks.Add(new TodoItem
         {
             Title = TaskEntry.Text,
+            Due = DateTime.Now.AddDays(1),
             IsDone = false
         });
 
-        TaskEntry.Text = "";
+        TaskEntry.Text = string.Empty;
     }
 }

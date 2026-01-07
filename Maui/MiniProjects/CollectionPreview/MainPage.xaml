@@ -15,16 +15,31 @@
         <CollectionView ItemsSource="{Binding Tasks}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10" Margin="5">
-                      <HorizontalStackLayout Spacing="10">
-                    
-                    <CheckBox IsChecked="{Binding IsDone}" />
+                <Frame Padding="10" Margin="5">
+                <Grid
+                  ColumnDefinitions="2*,5*"
+                  RowDefinitions="Auto,Auto">
 
-                        <Label 
-                            Text="{Binding Title}"
-                               FontSize="18"
-                               VerticalOptions="Center" />
-                                  </HorizontalStackLayout>
+                    <CheckBox Grid.Row="0"
+                                      Grid.Column="0"
+                                      IsChecked="{Binding IsDone}" 
+                                      VerticalOptions="Center"/>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding Title}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" 
+                                   Margin="10,0,0,0"/>
+
+                               <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Due, StringFormat='{0:dd MMM yyyy}'}"
+                                   FontSize="12"
+                                   TextColor="Gray"
+                                   Margin="10,0,0,0" />
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
