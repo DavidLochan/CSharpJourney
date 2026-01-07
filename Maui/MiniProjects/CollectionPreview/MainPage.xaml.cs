@@ -4,7 +4,7 @@ namespace CollectionPreview;
 
 public partial class MainPage : ContentPage
 {
-    public ObservableCollection<string> Tasks { get; set; } = new();
+    public ObservableCollection<TodoItem> Tasks { get; set; } = new();
 
     public MainPage()
     {
@@ -12,12 +12,17 @@ public partial class MainPage : ContentPage
         BindingContext = this;
     }
 
-    void OnAddTask(object sender, EventArgs e)
+    private void OnAddTask(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(TaskEntry.Text))
+        if (string.IsNullOrWhiteSpace(TaskEntry.Text))
+            return;
+
+        Tasks.Add(new TodoItem
         {
-            Tasks.Add(TaskEntry.Text);
-            TaskEntry.Text = string.Empty;
-        }
+            Title = TaskEntry.Text,
+            IsDone = false
+        });
+
+        TaskEntry.Text = "";
     }
 }

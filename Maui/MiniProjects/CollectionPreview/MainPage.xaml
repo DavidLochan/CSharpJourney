@@ -16,8 +16,15 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="10" Margin="5">
-                        <Label Text="{Binding}"
-                               FontSize="18"/>
+                      <HorizontalStackLayout Spacing="10">
+                    
+                    <CheckBox IsChecked="{Binding IsDone}" />
+
+                        <Label 
+                            Text="{Binding Title}"
+                               FontSize="18"
+                               VerticalOptions="Center" />
+                                  </HorizontalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
