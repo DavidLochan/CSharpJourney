@@ -3,20 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BindingPlayground.MainPage">
 
-    <ScrollView>
-       <VerticalStackLayout
-    VerticalOptions="Center"
-    Spacing="20"
-    Padding="30">
+    <VerticalStackLayout
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Spacing="20"
+        WidthRequest="250">
 
-    <Entry x:Name="InputEntry"
-           Placeholder="Type something..." />
+        <!-- TEXT BINDING -->
+        <Label
+            FontSize="Title"
+            BindingContext="{x:Reference TextEntry}"
+            Text="{Binding Text}"
+            HorizontalTextAlignment="Center" />
 
-    <Label FontSize="22"
-           HorizontalOptions="Center"
-           BindingContext="{x:Reference InputEntry}"
-           Text="{Binding Text}" />
-</VerticalStackLayout>
-    </ScrollView>
+        <Entry
+            x:Name="TextEntry"
+            Placeholder="Enter some text..." />
+
+        <!-- SLIDER -->
+        <Slider
+            x:Name="ZoomSlider"
+            Minimum="0.5"
+            Maximum="2"
+            Value="1" />
+
+        <!-- IMAGE ZOOM -->
+        <Image
+            Source="dotnet_bot.png"
+            WidthRequest="200"
+            HorizontalOptions="Center"
+            BindingContext="{x:Reference ZoomSlider}"
+            Scale="{Binding Value}" />
+
+    </VerticalStackLayout>
 
 </ContentPage>
