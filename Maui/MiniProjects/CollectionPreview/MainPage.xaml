@@ -5,8 +5,21 @@
               Title="Tasks">
 
           <ScrollView>    
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout 
+            Padding="20" Spacing="15">
+                   <!--Header-->
+            <Label
+                      Text="My Tasks"
+                     FontSize="24"
+                      FontAttributes="Bold"
+                      HorizontalOptions="Center" />
 
+                    <Label
+                    Text="CollectionView + Layouts"
+                   FontSize="13"
+                   TextColor="Gray"
+                    HorizontalOptions="Center" />
+                    
         <Entry x:Name="TaskEntry"
                Placeholder="Enter a task"/>
 
@@ -47,6 +60,6 @@
         </CollectionView>
 
     </VerticalStackLayout>
-    <ScrollView>
+    </ScrollView>
 
 </ContentPage>
