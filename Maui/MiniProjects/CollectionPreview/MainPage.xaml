@@ -19,9 +19,17 @@
                    FontSize="13"
                    TextColor="Gray"
                     HorizontalOptions="Center" />
-                    
-        <Entry x:Name="TaskEntry"
+
+                    <Grid ColumnDefinitions="3*,2*"
+                          ColumnSpacing="10">
+
+                <Entry  Grid.Column="0"
+                x:Name="TaskEntry"
                Placeholder="Enter a task"/>
+
+                <DatePicker Grid.Column="1"
+                x:Name="DueDatePicker"/>
+                </Grid>
 
         <Button Text="Add Task"
                 Clicked="OnAddTask"/>
