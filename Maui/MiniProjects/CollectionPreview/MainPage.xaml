@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionPreview.MainPage"
               Title="Tasks">
-              
+
+          <ScrollView>    
         <VerticalStackLayout Padding="20" Spacing="15">
 
         <Entry x:Name="TaskEntry"
@@ -46,5 +47,6 @@
         </CollectionView>
 
     </VerticalStackLayout>
+    <ScrollView>
 
 </ContentPage>
