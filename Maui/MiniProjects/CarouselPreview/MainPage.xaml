@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarouselPreview.MainPage"
+             Title="Phones">
+
+   <CarouselView
+        ItemsSource="{Binding Products}"
+        Margin="20">
+
+        <CarouselView.ItemsLayout>
+            <LinearItemsLayout
+                Orientation="Horizontal"
+                ItemSpacing="30" />
+        </CarouselView.ItemsLayout>
+
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout Spacing="15">
+
+                    <Image
+                        Source="{Binding Image}"
+                        HeightRequest="250"
+                        Aspect="AspectFill" />
+
+                    <Label
+                        Text="{Binding Title}"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="{Binding Description}"
+                        FontSize="14"
+                        TextColor="Gray"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+
+    </CarouselView>
+
+</ContentPage>
