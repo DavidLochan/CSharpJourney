@@ -11,22 +11,17 @@
         <CarouselView.ItemsLayout>
             <LinearItemsLayout
                 Orientation="Horizontal"
-                ItemSpacing="30" />
+                ItemSpacing="40" />
         </CarouselView.ItemsLayout>
 
         <CarouselView.ItemTemplate>
             <DataTemplate>
-                <Frame
-            Padding="10"
-            HasShadow="False"
-            WidthRequest="300"
-            HorizontalOptions="Center">
                 <VerticalStackLayout Spacing="15">
 
                     <Image
                         Source="{Binding Image}"
                         HeightRequest="250"
-                        Aspect="AspectFill"
+                        Aspect="AspectFit"
                         HorizontalOptions="Center"  />
 
                     <Label
@@ -42,7 +37,6 @@
                         HorizontalTextAlignment="Center" />
 
                 </VerticalStackLayout>
-                  </Frame>
             </DataTemplate>
         </CarouselView.ItemTemplate>
 
