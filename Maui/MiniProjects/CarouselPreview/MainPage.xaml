@@ -4,84 +4,79 @@
              x:Class="CarouselPreview.MainPage"
              Title="Phones">
 
-   <Grid RowDefinitions="*,Auto">
+    <Grid RowDefinitions="*,Auto">
 
-   <CarouselView
-    Grid.Row="0"
-           x:Name="PhonesCarousel"
-        ItemsSource="{Binding Products}"
-        Margin="20"  
-        IndicatorView="PhonesIndicator">         
+        <CarouselView
+            Grid.Row="0"
+            x:Name="PhonesCarousel"
+            ItemsSource="{Binding Products}"
+            IndicatorView="PhonesIndicator"
+            Margin="20">
 
-        <CarouselView.ItemsLayout>
-            <LinearItemsLayout
-                Orientation="Horizontal"
-                ItemSpacing="40" />
-        </CarouselView.ItemsLayout>
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Horizontal"
+                    ItemSpacing="40" />
+            </CarouselView.ItemsLayout>
 
-        <CarouselView.ItemTemplate>
-            <DataTemplate>
-                <Border
-        Stroke="Gray"
-        StrokeThickness="1"
-        Padding="16"
-        Margin="20"
-        WidthRequest="420"
-         HorizontalOptions="Center"
-        BackgroundColor="#1E1E1E">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Stroke="Gray"
+                        StrokeThickness="1"
+                        Padding="16"
+                        Margin="20"
+                        WidthRequest="420"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#1E1E1E">
 
-         <Border.StrokeShape>
-            <RoundRectangle CornerRadius="24"/>
-        </Border.StrokeShape>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="24"/>
+                        </Border.StrokeShape>
 
-                <VerticalStackLayout Spacing="15">
+                        <VerticalStackLayout Spacing="15">
 
-                    <Image
-                        Source="{Binding Image}"
-                        HeightRequest="200"
-                        WidthRequest="200"
-                        Aspect="AspectFit"
-                        HorizontalOptions="Center"  >
+                            <Image
+                                Source="{Binding Image}"
+                                HeightRequest="200"
+                                WidthRequest="200"
+                                Aspect="AspectFit"
+                                HorizontalOptions="Center">
 
-                        <Image.Clip>
-                          <EllipseGeometry
-                           Center="100,100"
-                           RadiusX="100"
-                           RadiusY="100" />
-                            </Image.Clip>
-                        </Image>
+                                <Image.Clip>
+                                    <EllipseGeometry
+                                        Center="100,100"
+                                        RadiusX="100"
+                                        RadiusY="100" />
+                                </Image.Clip>
+                            </Image>
 
-                    <Label
-                        Text="{Binding Title}"
-                        FontSize="22"
-                        FontAttributes="Bold"
-                        HorizontalOptions="Center" />
+                            <Label
+                                Text="{Binding Title}"
+                                FontSize="22"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" />
 
-                    <Label
-                        Text="{Binding Description}"
-                        FontSize="14"
-                        TextColor="Gray"
-                        HorizontalTextAlignment="Center" />
+                            <Label
+                                Text="{Binding Description}"
+                                FontSize="14"
+                                TextColor="Gray"
+                                HorizontalTextAlignment="Center" />
 
-                </VerticalStackLayout>
-                   </Border>
-            </DataTemplate>
-        </CarouselView.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        
+        <IndicatorView
+            Grid.Row="1"
+            x:Name="PhonesIndicator"
+            IndicatorColor="#666666"
+            SelectedIndicatorColor="#03DAC6"
+            IndicatorSize="18"
+            HorizontalOptions="Center"
+            Margin="0,10"/>
 
-    </CarouselView>
-
-            <ContentView HeightRequest="40">
-                <BoxView BackgroundColor="Red" HeightRequest="60" />
-    <IndicatorView
-        Grid.Row="1"
-    x:Name="PhonesIndicator"
-    IndicatorColor="#666666"
-    SelectedIndicatorColor="#03DAC6"
-    IndicatorSize="18"
-    HorizontalOptions="Center"
-     Margin="0,10"/>
-</ContentView>
-
-      </Grid>
-
+    </Grid>
 </ContentPage>
