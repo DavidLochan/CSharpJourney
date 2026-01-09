@@ -20,9 +20,18 @@
 
                     <Image
                         Source="{Binding Image}"
-                        HeightRequest="250"
+                        HeightRequest="200"
+                        WidthRequest="200"
                         Aspect="AspectFit"
-                        HorizontalOptions="Center"  />
+                        HorizontalOptions="Center"  >
+
+                        <Image.Clip>
+                          <EllipseGeometry
+                           Center="100,100"
+                           RadiusX="100"
+                           RadiusY="100" />
+                            </Image.Clip>
+                        </Image>
 
                     <Label
                         Text="{Binding Title}"
