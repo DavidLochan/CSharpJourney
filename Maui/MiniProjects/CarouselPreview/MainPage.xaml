@@ -16,6 +16,19 @@
 
         <CarouselView.ItemTemplate>
             <DataTemplate>
+                <Border
+        Stroke="Gray"
+        StrokeThickness="1"
+        Padding="16"
+        Margin="20"
+        WidthRequest="420"
+         HorizontalOptions="Center"
+        BackgroundColor="#1E1E1E">
+
+         <Border.StrokeShape>
+            <RoundRectangle CornerRadius="24"/>
+        </Border.StrokeShape>
+
                 <VerticalStackLayout Spacing="15">
 
                     <Image
@@ -46,6 +59,7 @@
                         HorizontalTextAlignment="Center" />
 
                 </VerticalStackLayout>
+                   </Border>
             </DataTemplate>
         </CarouselView.ItemTemplate>
 
