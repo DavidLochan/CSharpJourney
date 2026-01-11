@@ -28,10 +28,21 @@
                 <RoundRectangle CornerRadius="16"/>
             </Border.StrokeShape>
 
-            <Label Text="Movies will appear here"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+           <VerticalStackLayout Spacing="12">
+
+    <BoxView HeightRequest="240"
+             BackgroundColor="#1E1E1E"
+             CornerRadius="12"/>
+
+    <Label Text="Movie Title"
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="White"/>
+
+    <Label Text="⭐ 7.5"
+           TextColor="#03DAC6"/>
+
+</VerticalStackLayout>
         </Border>
 
         <!-- Footer -->
