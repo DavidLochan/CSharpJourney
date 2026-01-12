@@ -30,8 +30,11 @@
                 Margin="24">
 
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"
-                                       ItemSpacing="24"/>
+                   <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="7"
+                    HorizontalItemSpacing="24"
+                   VerticalItemSpacing="32" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
