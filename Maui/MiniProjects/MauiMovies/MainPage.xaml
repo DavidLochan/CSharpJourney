@@ -5,8 +5,9 @@
              BackgroundColor="#121212">
 
     <!-- macOS-first grid -->
-    <Grid RowDefinitions="Auto,*,Auto"
-          ColumnDefinitions="*,900,*">
+    <Grid RowDefinitions="Auto,*"
+          ColumnDefinitions="260,*"
+          BackgroundColor="#0F0F0F">
 
         <!-- Header -->
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Padding="20">
@@ -16,6 +17,23 @@
                    TextColor="White"
                    HorizontalOptions="Center"/>
         </Grid>
+        <!-- SIDEBAR - LEFT COLUMN -->
+                           <VerticalStackLayout
+                                 Grid.Column="0"
+                                 Padding="20"
+                                 Spacing="16"
+                                 BackgroundColor="#1A1A1A">
+
+                          <Label Text="MauiMovies"
+                                 FontSize="22"
+                                 FontAttributes="Bold"
+                                 TextColor="White"/>
+
+                          <Label Text="Home" TextColor="#CCCCCC"/>
+                          <Label Text="Movies" TextColor="White"/>
+                         <Label Text="Profile" TextColor="#CCCCCC"/>
+
+                         </VerticalStackLayout>
 
         <!-- Main content area -->
         <Border Grid.Row="1"
