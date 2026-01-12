@@ -4,7 +4,7 @@
              x:Class="MauiMovies.MainPage"
              BackgroundColor="#0F0F0F">
 
-    <Grid ColumnDefinitions="260,*">
+    <Grid ColumnDefinitions="285,*">
 
         <!-- Sidebar -->
         <VerticalStackLayout
@@ -23,44 +23,53 @@
             <Label Text="Profile" FontSize="18" TextColor="#CCCCCC"/>
         </VerticalStackLayout>
 
-        <!-- Main Content -->
+        <!-- Main Content with FlexLayout -->
         <ScrollView Grid.Column="1">
-            <CollectionView
-                ItemsSource="{Binding Movies}"
-                Margin="24">
+            <FlexLayout
+                Direction="Row"
+                Wrap="Wrap"
+                JustifyContent="Start"
+                AlignItems="Start"
+                Padding="24"
+                BindableLayout.ItemsSource="{Binding Movies}">
 
-                <CollectionView.ItemsLayout>
-                   <GridItemsLayout
-                    Orientation="Vertical"
-                    Span="7"
-                    HorizontalItemSpacing="24"
-                   VerticalItemSpacing="32" />
-                </CollectionView.ItemsLayout>
-
-                <CollectionView.ItemTemplate>
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout WidthRequest="180">
+                        <VerticalStackLayout 
+                            WidthRequest="210"
+                            Margin="12"
+                            Spacing="8">
 
-                            <Border StrokeShape="RoundRectangle 12"
-                                   StrokeThickness="1"
-                                    Stroke="#333"
-                                    HeightRequest="260">
+                            <Border 
+                                StrokeThickness="1"
+                                Stroke="#333"
+                                BackgroundColor="#222"
+                                HeightRequest="300"
+                                WidthRequest="210">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12"/>
+                                </Border.StrokeShape>
 
-                            <Image Source="{Binding Poster}"
-                                    Aspect="AspectFill"/>
-                         </Border>
+                                <Image Source="{Binding Poster}"
+                                       Aspect="AspectFill"
+                                       MinimumWidthRequest="180"/>
+                            </Border>
 
                             <Label Text="{Binding Title}"
                                    TextColor="White"
-                                   FontAttributes="Bold"/>
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="2"/>
 
                             <Label Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
-                                   TextColor="#F5C542"/>
+                                   TextColor="#F5C542"
+                                   FontSize="14"/>
                         </VerticalStackLayout>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
+                </BindableLayout.ItemTemplate>
 
-            </CollectionView>
+            </FlexLayout>
         </ScrollView>
 
     </Grid>
