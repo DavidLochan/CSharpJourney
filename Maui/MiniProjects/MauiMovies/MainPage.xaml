@@ -22,27 +22,53 @@
                 Grid.Column="1"
                 Stroke="#333"
                 StrokeThickness="1"
-                Padding="20">
+                Padding="24"
+                MaximumWidthRequest="1100"
+                HorizontalOptions="Center">
 
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="16"/>
             </Border.StrokeShape>
 
-           <VerticalStackLayout Spacing="12">
+            <ScrollView>
 
-    <BoxView HeightRequest="240"
-             BackgroundColor="#1E1E1E"
-             CornerRadius="12"/>
+           <VerticalStackLayout Spacing="20"
+            BindableLayout.ItemsSource="{Binding Movies}">
+               
+               <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="200,*"
+                                  ColumnSpacing="32">
 
-    <Label Text="Movie Title"
-           FontSize="18"
-           FontAttributes="Bold"
-           TextColor="White"/>
+                                  <!-- Poster -->
+                                <Border Stroke="#333"
+                                        StrokeThickness="1"
+                                        WidthRequest="220"
+                                        HeightRequest="320">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12"/>
+                                    </Border.StrokeShape>
+                                    <Image Source="{Binding Poster}"
+                                           Aspect="AspectFit"/>
+                                </Border>
 
-    <Label Text="⭐ 7.5"
-           TextColor="#03DAC6"/>
-
-</VerticalStackLayout>
+                          <!-- Movie info -->
+                                <VerticalStackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="8">
+                                    <Label Text="{Binding Title}"
+                                           FontSize="22"
+                                           FontAttributes="Bold"
+                                           TextColor="White"/>
+                                    <Label Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
+                                           FontSize="16"
+                                           TextColor="#03DAC6"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </ScrollView>
         </Border>
 
         <!-- Footer -->
