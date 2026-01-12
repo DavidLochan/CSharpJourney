@@ -2,100 +2,63 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiMovies.MainPage"
-             BackgroundColor="#121212">
+             BackgroundColor="#0F0F0F">
 
-    <!-- macOS-first grid -->
-    <Grid RowDefinitions="Auto,*"
-          ColumnDefinitions="260,*"
-          BackgroundColor="#0F0F0F">
+    <Grid ColumnDefinitions="260,*">
 
-        <!-- Header -->
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Padding="20">
+        <!-- Sidebar -->
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            Spacing="20"
+            BackgroundColor="#1A1A1A">
+
             <Label Text="🎬 MauiMovies"
-                   FontSize="28"
+                   FontSize="22"
                    FontAttributes="Bold"
-                   TextColor="White"
-                   HorizontalOptions="Center"/>
-        </Grid>
-        <!-- SIDEBAR - LEFT COLUMN -->
-                           <VerticalStackLayout
-                                 Grid.Column="0"
-                                 Padding="20"
-                                 Spacing="16"
-                                 BackgroundColor="#1A1A1A">
+                   TextColor="White"/>
 
-                          <Label Text="MauiMovies"
-                                 FontSize="22"
-                                 FontAttributes="Bold"
-                                 TextColor="White"/>
+            <Label Text="Home" FontSize="18" TextColor="#CCCCCC"/>
+            <Label Text="Movies" FontSize="18" TextColor="White"/>
+            <Label Text="Profile" FontSize="18" TextColor="#CCCCCC"/>
+        </VerticalStackLayout>
 
-                          <Label Text="Home" TextColor="#CCCCCC"/>
-                          <Label Text="Movies" TextColor="White"/>
-                         <Label Text="Profile" TextColor="#CCCCCC"/>
+        <!-- Main Content -->
+        <ScrollView Grid.Column="1">
+            <CollectionView
+                ItemsSource="{Binding Movies}"
+                Margin="24">
 
-                         </VerticalStackLayout>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       ItemSpacing="24"/>
+                </CollectionView.ItemsLayout>
 
-        <!-- Main content area -->
-        <Border Grid.Row="1"
-                Grid.Column="1"
-                Stroke="#333"
-                StrokeThickness="1"
-                Padding="24"
-                MaximumWidthRequest="1100"
-                HorizontalOptions="Center">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout WidthRequest="180">
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="16"/>
-            </Border.StrokeShape>
+                            <Border StrokeShape="RoundRectangle 12"
+                                   StrokeThickness="1"
+                                    Stroke="#333"
+                                    HeightRequest="260">
 
-            <ScrollView>
+                            <Image Source="{Binding Poster}"
+                                    Aspect="AspectFill"/>
+                         </Border>
 
-           <VerticalStackLayout Spacing="20"
-            BindableLayout.ItemsSource="{Binding Movies}">
-               
-               <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Grid ColumnDefinitions="200,*"
-                                  ColumnSpacing="32">
+                            <Label Text="{Binding Title}"
+                                   TextColor="White"
+                                   FontAttributes="Bold"/>
 
-                                  <!-- Poster -->
-                                <Border Stroke="#333"
-                                        StrokeThickness="1"
-                                        WidthRequest="220"
-                                        HeightRequest="320">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="12"/>
-                                    </Border.StrokeShape>
-                                    <Image Source="{Binding Poster}"
-                                           Aspect="AspectFit"/>
-                                </Border>
+                            <Label Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
+                                   TextColor="#F5C542"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
 
-                          <!-- Movie info -->
-                                <VerticalStackLayout Grid.Column="1"
-                                                     VerticalOptions="Center"
-                                                     Spacing="8">
-                                    <Label Text="{Binding Title}"
-                                           FontSize="22"
-                                           FontAttributes="Bold"
-                                           TextColor="White"/>
-                                    <Label Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
-                                           FontSize="16"
-                                           TextColor="#03DAC6"/>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </VerticalStackLayout>
-            </ScrollView>
-        </Border>
-
-        <!-- Footer -->
-        <Grid Grid.Row="2" Grid.ColumnSpan="3" Padding="10">
-            <Label Text="Footer David"
-                   FontSize="12"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"/>
-        </Grid>
+            </CollectionView>
+        </ScrollView>
 
     </Grid>
 </ContentPage>
