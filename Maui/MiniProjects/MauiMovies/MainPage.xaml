@@ -5,7 +5,7 @@
              BackgroundColor="#0F0F0F">
 
 <Grid>
-    <Grid ColumnDefinitions="285,*">
+    <Grid  ColumnDefinitions="285,*">
 
         <!-- Sidebar -->
         <VerticalStackLayout
@@ -84,7 +84,8 @@
 
 <Grid
             IsVisible="{Binding IsPopupVisible}"
-            BackgroundColor="#B3000000"
+            BackgroundColor="#66000000"
+            Opacity = "1"
             InputTransparent="False">
 
             <Grid.GestureRecognizers>
