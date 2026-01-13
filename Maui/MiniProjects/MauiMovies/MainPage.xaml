@@ -4,6 +4,7 @@
              x:Class="MauiMovies.MainPage"
              BackgroundColor="#0F0F0F">
 
+<Grid>
     <Grid ColumnDefinitions="285,*">
 
         <!-- Sidebar -->
@@ -44,6 +45,8 @@
                                 <PointerGestureRecognizer
                                     PointerEntered="OnPointerEntered"
                                     PointerExited="OnPointerExited"/>
+                                  <TapGestureRecognizer
+                                   Tapped="OnMovieTapped"/>
                             </VerticalStackLayout.GestureRecognizers>
 
                             <Border 
@@ -77,6 +80,65 @@
 
             </FlexLayout>
         </ScrollView>
+    </Grid>
 
+<Grid
+            IsVisible="{Binding IsPopupVisible}"
+            BackgroundColor="#B3000000"
+            InputTransparent="False">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ClosePopup"/>
+            </Grid.GestureRecognizers>
+
+            <Border
+                BackgroundColor="#1E1E1E"
+                WidthRequest="520"
+                HeightRequest="720"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="24"
+                Stroke="#333"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16"/>
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Image
+                        Source="{Binding SelectedMovie.Poster}"
+                        HeightRequest="360"
+                        Aspect="AspectFit"/>
+
+                    <Label
+                        Text="{Binding SelectedMovie.Title}"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+
+                    <Label
+                        Text="{Binding SelectedMovie.Rating, StringFormat='⭐ {0:F1}'}"
+                        FontSize="20"
+                        TextColor="#F5C542"/>
+                    
+                    <Label 
+                        Text="Movie details and synopsis would go here. This provides a deep dive into the cinematic experience."
+                        TextColor="#CCCCCC"
+                        FontSize="14"/>
+
+                    <Button
+                        Text="Close"
+                        Clicked="ClosePopup"
+                        BackgroundColor="#CC3333"
+                        TextColor="White"
+                        CornerRadius="8"
+                        HorizontalOptions="End"
+                        Margin="0,20,0,0"/>
+
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
     </Grid>
 </ContentPage>

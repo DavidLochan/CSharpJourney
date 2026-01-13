@@ -7,6 +7,29 @@ public partial class MainPage : ContentPage
 {
     public ObservableCollection<Movie> Movies { get; set; }
 
+	         private Movie? _selectedMovie;
+    public Movie? SelectedMovie
+    {
+        get => _selectedMovie;
+        set
+        {
+            _selectedMovie = value;
+            OnPropertyChanged();
+            IsPopupVisible = value != null;
+        }
+    }
+
+    private bool _isPopupVisible;
+    public bool IsPopupVisible
+    {
+        get => _isPopupVisible;
+        set
+        {
+            _isPopupVisible = value;
+            OnPropertyChanged();
+        }
+    }
+
     public MainPage()
     {
         InitializeComponent();
@@ -71,6 +94,21 @@ public partial class MainPage : ContentPage
                 element.FadeTo(0.9, 200)
             );
         }
+    }
+	// Logic for selecting a movie
+    private void OnMovieTapped(object sender, EventArgs e)
+    {
+        if (sender is BindableObject bindable &&
+            bindable.BindingContext is Movie movie)
+        {
+            SelectedMovie = movie;
+        }
+    }
+
+    // Logic for closing the popup
+    private void ClosePopup(object sender, EventArgs e) // Added parameters here!
+    {
+        SelectedMovie = null;
     }
 
 }
