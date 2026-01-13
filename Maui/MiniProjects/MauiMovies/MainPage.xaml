@@ -24,12 +24,35 @@
             <Label Text="Profile" FontSize="18" TextColor="#CCCCCC"/>
         </VerticalStackLayout>
 
+<Grid Grid.Column="1" RowDefinitions="Auto,*">
+           <ScrollView Grid.Row="0" Orientation="Horizontal" Margin="0,8,0,0">
+    <FlexLayout
+        Direction="Row"
+        Padding="24,6"
+        BindableLayout.ItemsSource="{Binding Genres}">
+
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Button
+                    Text="{Binding .}"
+                    Clicked="OnGenreClicked"
+                    BackgroundColor="#2A2A2A"
+                    TextColor="White"
+                    CornerRadius="16"
+                    Padding="16,6"
+                    Margin="6,0"/>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </FlexLayout>
+</ScrollView>
+
         <!-- Main Content with FlexLayout -->
-        <ScrollView Grid.Column="1">
+        <ScrollView Grid.Column="1" Grid.Row="1">
             <FlexLayout
                 Direction="Row"
                 Wrap="Wrap"
                 JustifyContent="Start"
+                AlignContent="Start"
                 AlignItems="Start"
                 Padding="24"
                 BindableLayout.ItemsSource="{Binding Movies}">
@@ -80,6 +103,7 @@
 
             </FlexLayout>
         </ScrollView>
+    </Grid>
     </Grid>
 
 <Grid
