@@ -40,6 +40,12 @@
                             Margin="12"
                             Spacing="8">
 
+                            <VerticalStackLayout.GestureRecognizers>
+                                <PointerGestureRecognizer
+                                    PointerEntered="OnPointerEntered"
+                                    PointerExited="OnPointerExited"/>
+                            </VerticalStackLayout.GestureRecognizers>
+
                             <Border 
                                 StrokeThickness="1"
                                 Stroke="#333"

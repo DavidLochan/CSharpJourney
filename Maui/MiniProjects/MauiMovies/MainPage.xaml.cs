@@ -49,4 +49,28 @@ public partial class MainPage : ContentPage
 
         BindingContext = this;
     }
+	private async void OnPointerEntered(object sender, PointerEventArgs e)
+    {
+        if (sender is VisualElement element)
+        {
+            // Animate scale up and brighten
+            await Task.WhenAll(
+                element.ScaleTo(1.05, 200, Easing.CubicOut),
+                element.FadeTo(1.0, 200)
+            );
+        }
+    }
+
+    private async void OnPointerExited(object sender, PointerEventArgs e)
+    {
+        if (sender is VisualElement element)
+        {
+            // Animate scale back to normal
+            await Task.WhenAll(
+                element.ScaleTo(1.0, 200, Easing.CubicOut),
+                element.FadeTo(0.9, 200)
+            );
+        }
+    }
+
 }
