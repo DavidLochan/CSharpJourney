@@ -30,6 +30,26 @@
                 FontSize="14"
                 TextColor="#CCCCCC"/>
 
+            <Label
+              Text="{Binding Year}"
+              FontSize="14"
+              TextColor="#AAAAAA"/>
+
+              <Label
+                    Text="Director:"
+                    FontAttributes="Bold"
+                     TextColor="White"/>
+
+                <Label
+                  Text="{Binding Director}"
+                  TextColor="#CCCCCC"/>
+
+                  <Label
+                      Text="{Binding Description}"
+                      FontSize="14"
+                      TextColor="#DDDDDD"
+                      LineHeight="1.4"/>
+
         </VerticalStackLayout>
     </ScrollView>
 
