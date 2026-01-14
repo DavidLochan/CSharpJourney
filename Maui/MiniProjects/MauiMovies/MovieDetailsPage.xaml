@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiMovies.MovieDetailsPage"
+    Title="Movie Details"
+    BackgroundColor="#0F0F0F">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+
+            <Image
+                Source="{Binding Poster}"
+                HeightRequest="360"
+                Aspect="AspectFit"/>
+
+            <Label
+                Text="{Binding Title}"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="White"/>
+
+            <Label
+                Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
+                FontSize="18"
+                TextColor="#F5C542"/>
+
+            <Label
+                Text="{Binding Genre}"
+                FontSize="14"
+                TextColor="#CCCCCC"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

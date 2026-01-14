@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace MauiMovies;
 
-public partial class MainPage : ContentPage
+public partial class MoviesPage : ContentPage
 {
     public ObservableCollection<Movie> Movies { get; set; }
 	private List<Movie> _allMovies;
@@ -31,7 +31,7 @@ public partial class MainPage : ContentPage
         }
     }
 
-    public MainPage()
+    public MoviesPage()
     {
         InitializeComponent();
 
@@ -98,15 +98,14 @@ public partial class MainPage : ContentPage
         }
     }
 	// Logic for selecting a movie
-    private void OnMovieTapped(object sender, EventArgs e)
+    private async void OnMovieTapped(object sender, EventArgs e)
+   {
+    if (sender is BindableObject bindable &&
+        bindable.BindingContext is Movie movie)
     {
-        if (sender is BindableObject bindable &&
-            bindable.BindingContext is Movie movie)
-        {
-            SelectedMovie = movie;
-        }
+        await Navigation.PushAsync(new MovieDetailsPage(movie));
     }
-
+    }
     // Logic for closing the popup
     private void ClosePopup(object sender, EventArgs e) // Added parameters here!
     {
@@ -141,6 +140,10 @@ private void OnGenreClicked(object sender, EventArgs e)
 {
     if (sender is Button btn)
         SelectedGenre = btn.Text;
+}
+protected override void OnAppearing()
+{
+    base.OnAppearing();
 }
 
 }

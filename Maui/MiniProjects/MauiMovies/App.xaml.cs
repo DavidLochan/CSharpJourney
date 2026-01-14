@@ -11,10 +11,10 @@ public partial class App : Application
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        return new Window(new MainPage())
+        return new Window( new NavigationPage(new MoviesPage()))
         {
             Title = "MauiMovies 🎬",
-			MinimumWidth = 1100,
+            MinimumWidth = 1100,
             MinimumHeight = 700
         };
     }
