@@ -191,7 +191,13 @@ public partial class MoviesPage : ContentPage
     if (sender is BindableObject bindable &&
         bindable.BindingContext is Movie movie)
     {
-        await Navigation.PushAsync(new MovieDetailsPage(movie));
+        await Shell.Current.GoToAsync(
+    nameof(MovieDetailsPage),
+    new Dictionary<string, object>
+    {
+        { "Movie", movie }
+    }
+);
     }
     }
     // Logic for closing the popup
