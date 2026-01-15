@@ -43,7 +43,7 @@ public partial class MoviesPage : ContentPage
 
     _httpClient = new HttpClient
     {
-        BaseAddress = new Uri(App.TmdbBaseUrl)
+        BaseAddress = new Uri(AppSecrets.TmdbBaseUrl)
     };
 
     BindingContext = this;
@@ -51,7 +51,7 @@ public partial class MoviesPage : ContentPage
 
     private async Task LoadMovies()
 {
-    var url = $"trending/movie/week?api_key={App.TmdbApiKey}";
+    var url = $"trending/movie/week?api_key={AppSecrets.TmdbApiKey}";
 
     var response =
         await _httpClient.GetFromJsonAsync<TrendingMovies>(url);
