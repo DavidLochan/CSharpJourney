@@ -9,7 +9,6 @@ public class Movie
 
 // used onlyb on details page
     public int Year { get; set; }
-    public string Director { get; set; }
     public string Description { get; set; }
 
     public int Id { get; set; }

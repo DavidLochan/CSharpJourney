@@ -35,14 +35,6 @@
               FontSize="14"
               TextColor="#AAAAAA"/>
 
-              <Label
-                    Text="Director:"
-                    FontAttributes="Bold"
-                     TextColor="White"/>
-
-                <Label
-                  Text="{Binding Director}"
-                  TextColor="#CCCCCC"/>
 
                   <Label
                       Text="{Binding Description}"
