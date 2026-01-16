@@ -65,6 +65,7 @@ public partial class MoviesPage : ContentPage
     {
         Movies.Add(new Movie
         {
+            Id = m.id,
             Title = m.title,
             Rating = m.vote_average,
             Poster = $"https://image.tmdb.org/t/p/w500{m.poster_path}",
@@ -100,19 +101,13 @@ public partial class MoviesPage : ContentPage
     }
 	// Logic for selecting a movie
     private async void OnMovieTapped(object sender, EventArgs e)
-   {
-    if (sender is BindableObject bindable &&
-        bindable.BindingContext is Movie movie)
+{
+    if (sender is BindableObject bindable && bindable.BindingContext is Movie movie)
     {
-        await Shell.Current.GoToAsync(
-    nameof(MovieDetailsPage),
-    new Dictionary<string, object>
-    {
-        { "Movie", movie }
+        // We switch from passing a Dictionary to passing a simple URL parameter
+        await Shell.Current.GoToAsync($"{nameof(MovieDetailsPage)}?id={movie.Id}");
     }
-);
-    }
-    }
+}
     // Logic for closing the popup
     private void ClosePopup(object sender, EventArgs e) // Added parameters here!
     {
