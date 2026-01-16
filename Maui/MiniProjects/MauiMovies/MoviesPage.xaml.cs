@@ -76,6 +76,22 @@ public partial class MoviesPage : ContentPage
     _allMovies = Movies.ToList();
 }
 
+    private async Task LoadGenres()
+{
+    var url = $"genre/movie/list?api_key={AppSecrets.TmdbApiKey}";
+
+    var response = await _httpClient.GetFromJsonAsync<GenreList>(url);
+
+    if (response?.genres == null)
+        return;
+
+    Genres.Clear();
+    Genres.Add("All");
+
+    foreach (var g in response.genres)
+        Genres.Add(g.Name);
+}
+
 	private async void OnPointerEntered(object sender, PointerEventArgs e)
     {
         if (sender is VisualElement element)
@@ -113,8 +129,7 @@ public partial class MoviesPage : ContentPage
     {
         SelectedMovie = null;
     }
-	  public ObservableCollection<string> Genres { get; } =
-    new() { "All", "Sci-Fi", "Action", "Drama" };
+	  public ObservableCollection<string> Genres { get; } = new();
 
 private string _selectedGenre = "All";
 public string SelectedGenre
@@ -146,6 +161,7 @@ private void OnGenreClicked(object sender, EventArgs e)
 protected override async void OnAppearing()
 {
     base.OnAppearing();
+    await LoadGenres();
     await LoadMovies();
 }
 
