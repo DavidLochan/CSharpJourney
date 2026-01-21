@@ -1,15 +1,17 @@
 ﻿using MauiMovies.Models;
-using System.Net.Http.Json;
+using MauiMovies.Services;
 using System.Collections.ObjectModel;
 
 namespace MauiMovies;
 
 public partial class MoviesPage : ContentPage
 {
+    private readonly IMovieService _movieService;
+    
     public ObservableCollection<Movie> Movies { get; set; }
-	private List<Movie> _allMovies;
+    private List<Movie> _allMovies;
 
-	         private Movie? _selectedMovie;
+    private Movie? _selectedMovie;
     public Movie? SelectedMovie
     {
         get => _selectedMovie;
@@ -32,71 +34,50 @@ public partial class MoviesPage : ContentPage
         }
     }
 
-   private HttpClient _httpClient;
-
-    public MoviesPage()
+    public MoviesPage(IMovieService movieService)
     {
         InitializeComponent();
+        _movieService = movieService;
 
-      Movies = new ObservableCollection<Movie>();
-       _allMovies = new List<Movie>();
+     Movies = new ObservableCollection<Movie>();
+        _allMovies = new List<Movie>();
 
-    _httpClient = new HttpClient
-    {
-        BaseAddress = new Uri(AppSecrets.TmdbBaseUrl)
-    };
-
-    BindingContext = this;
-}
-
-    private async Task LoadMovies()
-{
-    var url = $"trending/movie/week?api_key={AppSecrets.TmdbApiKey}";
-
-    var response =
-        await _httpClient.GetFromJsonAsync<TrendingMovies>(url);
-
-    if (response?.results == null)
-        return;
-
-    Movies.Clear();
-
-    foreach (var m in response.results)
-    {
-        Movies.Add(new Movie
-        {
-            Id = m.id,
-            Title = m.title,
-            Rating = m.vote_average,
-            Poster = $"https://image.tmdb.org/t/p/w500{m.poster_path}",
-            Genre = "Trending"
-        });
+        BindingContext = this;
+        
+        System.Diagnostics.Debug.WriteLine("MoviesPage created");
     }
 
-    _allMovies = Movies.ToList();
-}
+    private async Task LoadMovies()
+    {
+        try
+        {
+            System.Diagnostics.Debug.WriteLine("Loading movies...");
+            
+            var movies = await _movieService.GetTrendingMoviesAsync();
 
-    private async Task LoadGenres()
-{
-    var url = $"genre/movie/list?api_key={AppSecrets.TmdbApiKey}";
+            System.Diagnostics.Debug.WriteLine($"Received {movies.Count} movies");
 
-    var response = await _httpClient.GetFromJsonAsync<GenreList>(url);
+            Movies.Clear();
+            foreach (var movie in movies)
+            {
+                Movies.Add(movie);
+            }
 
-    if (response?.genres == null)
-        return;
+            _allMovies = Movies.ToList();
+            
+            System.Diagnostics.Debug.WriteLine($"Movies collection now has {Movies.Count} items");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"LoadMovies error: {ex.Message}");
+            await DisplayAlert("Error", $"Failed to load movies: {ex.Message}", "OK");
+        }
+    }
 
-    Genres.Clear();
-    Genres.Add("All");
-
-    foreach (var g in response.genres)
-        Genres.Add(g.Name);
-}
-
-	private async void OnPointerEntered(object sender, PointerEventArgs e)
+    private async void OnPointerEntered(object sender, PointerEventArgs e)
     {
         if (sender is VisualElement element)
         {
-            // Animate scale up and brighten
             await Task.WhenAll(
                 element.ScaleTo(1.05, 200, Easing.CubicOut),
                 element.FadeTo(1.0, 200)
@@ -108,61 +89,67 @@ public partial class MoviesPage : ContentPage
     {
         if (sender is VisualElement element)
         {
-            // Animate scale back to normal
             await Task.WhenAll(
                 element.ScaleTo(1.0, 200, Easing.CubicOut),
                 element.FadeTo(0.9, 200)
             );
         }
     }
-	// Logic for selecting a movie
+
     private async void OnMovieTapped(object sender, EventArgs e)
-{
-    if (sender is BindableObject bindable && bindable.BindingContext is Movie movie)
     {
-        // We switch from passing a Dictionary to passing a simple URL parameter
-        await Shell.Current.GoToAsync($"{nameof(MovieDetailsPage)}?id={movie.Id}");
+        if (sender is BindableObject bindable && bindable.BindingContext is Movie movie)
+        {
+            await Shell.Current.GoToAsync($"{nameof(MovieDetailsPage)}?id={movie.Id}");
+        }
     }
-}
-    // Logic for closing the popup
-    private void ClosePopup(object sender, EventArgs e) // Added parameters here!
+
+    private void ClosePopup(object sender, EventArgs e)
     {
         SelectedMovie = null;
     }
-	  public ObservableCollection<string> Genres { get; } = new();
 
-private string _selectedGenre = "All";
-public string SelectedGenre
-{
-    get => _selectedGenre;
-    set
+    public ObservableCollection<string> Genres { get; } = new();
+
+    private string _selectedGenre = "All";
+    public string SelectedGenre
     {
-        _selectedGenre = value;
-        OnPropertyChanged();
-        ApplyGenreFilter();
+        get => _selectedGenre;
+        set
+        {
+            _selectedGenre = value;
+            OnPropertyChanged();
+            ApplyGenreFilter();
+        }
     }
-}
-private void ApplyGenreFilter()
-{
-    Movies.Clear();
 
-    var filtered = SelectedGenre == "All"
-        ? _allMovies
-        : _allMovies.Where(m => m.Genre == SelectedGenre);
+    private void ApplyGenreFilter()
+    {
+        Movies.Clear();
 
-    foreach (var movie in filtered)
-        Movies.Add(movie);
-}
-private void OnGenreClicked(object sender, EventArgs e)
-{
-    if (sender is Button btn)
-        SelectedGenre = btn.Text;
-}
-protected override async void OnAppearing()
-{
-    base.OnAppearing();
-    await LoadGenres();
-    await LoadMovies();
-}
+        var filtered = SelectedGenre == "All"
+            ? _allMovies
+            : _allMovies.Where(m => m.Genre == SelectedGenre);
 
+        foreach (var movie in filtered)
+            Movies.Add(movie);
+    }
+
+    private void OnGenreClicked(object sender, EventArgs e)
+    {
+        if (sender is Button btn)
+            SelectedGenre = btn.Text;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        
+        System.Diagnostics.Debug.WriteLine("OnAppearing called");
+        
+        if (Movies.Count == 0)
+        {
+            await LoadMovies();
+        }
+    }
 }
