@@ -2,7 +2,7 @@
 using MauiMovies.Services;
 using System.Collections.ObjectModel;
 
-namespace MauiMovies;
+namespace MauiMovies.Views;
 
 public partial class MoviesPage : ContentPage
 {

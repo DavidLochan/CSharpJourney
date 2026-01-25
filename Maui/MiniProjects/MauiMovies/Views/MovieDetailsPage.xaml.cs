@@ -1,7 +1,7 @@
 using MauiMovies.Models;
 using System.Net.Http.Json;
 
-namespace MauiMovies;
+namespace MauiMovies.Views;
 
 [QueryProperty(nameof(MovieId), "id")]
 public partial class MovieDetailsPage : ContentPage

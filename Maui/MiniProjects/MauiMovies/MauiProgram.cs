@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using MauiMovies.Services;
 using Microsoft.Extensions.DependencyInjection;
+using MauiMovies.Views; 
+using MauiMovies.ViewModels;
 
 namespace MauiMovies;
 
@@ -21,6 +23,8 @@ public static class MauiProgram
 {
     client.BaseAddress = new Uri(AppSecrets.TmdbBaseUrl);
 });
+
+builder.Services.AddTransient<MoviesViewModel>();
 
 builder.Services.AddTransient<MoviesPage>();
 builder.Services.AddTransient<MovieDetailsPage>();

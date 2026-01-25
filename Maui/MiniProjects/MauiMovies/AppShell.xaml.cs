@@ -1,4 +1,6 @@
-﻿namespace MauiMovies;
+﻿using MauiMovies.Views;
+
+namespace MauiMovies;
 
 public partial class AppShell : Shell
 {
