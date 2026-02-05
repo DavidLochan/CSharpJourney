@@ -97,7 +97,6 @@ public class MoviesViewModel : INotifyPropertyChanged
         
         System.Diagnostics.Debug.WriteLine($"🔍 Filtered to {Movies.Count} movies for genre '{SelectedGenre}'");
     }
- // commit testing
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string name = "")
     {
