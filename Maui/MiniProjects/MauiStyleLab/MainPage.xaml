@@ -11,7 +11,9 @@
 
         <Label
             Text="Maui Style Lab"
-            FontSize="24" />
+            FontSize="24" 
+            Style="{StaticResource TitleLabel}"
+            HorizontalOptions="Center" />
 
         <Button
             Text="Primary Button" />
