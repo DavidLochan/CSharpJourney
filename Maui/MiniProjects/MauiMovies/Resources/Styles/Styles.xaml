@@ -431,14 +431,4 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
-    <Style x:Key="MovieTitle"
-       TargetType="Label">
-    <Setter Property="FontSize" Value="22" />
-    <Setter Property="FontAttributes" Value="Bold" />
-    <Setter Property="TextColor"
-            Value="{AppThemeBinding Light={StaticResource MidnightBlue},
-                                     Dark={StaticResource White}}" />
-</Style>
-
-
 </ResourceDictionary>
