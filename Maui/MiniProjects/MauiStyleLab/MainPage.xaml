@@ -15,6 +15,11 @@
             Style="{StaticResource TitleLabel}"
             HorizontalOptions="Center" />
 
+     <Label
+            Text="Learning styles, themes, and layouts"
+            Style="{StaticResource SubTitleLabel}"
+            HorizontalOptions="Center" />
+
         <Button
             Text="Primary Button" />
 

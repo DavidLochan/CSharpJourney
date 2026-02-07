@@ -432,11 +432,22 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
-    <Style x:Key="TitleLabel"
-       TargetType="Label">
-    <Setter Property="FontSize" Value="22" />
-    <Setter Property="FontAttributes" Value="Bold" />
-    <Setter Property="TextColor" Value="White" />
+    <Style x:Key="TitleLabel" TargetType="Label">
+    <Setter Property="FontSize" Value="22"/>
+    <Setter Property="FontAttributes" Value="Bold"/>
+    <Setter Property="TextColor"
+            Value="{AppThemeBinding Light=White, Dark=White}" />
+</Style>
+
+ <Style x:Key="SubTitleLabel" TargetType="Label">
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="TextColor"
+            Value="{AppThemeBinding Light=Gray, Dark=LightGray}" />
+</Style>
+
+<Style TargetType="ContentPage">
+    <Setter Property="BackgroundColor"
+            Value="{AppThemeBinding Light=#F8F9FA, Dark=#1C1C1E}" />
 </Style>
 
 </ResourceDictionary>
