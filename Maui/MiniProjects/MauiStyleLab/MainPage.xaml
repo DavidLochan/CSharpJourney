@@ -25,5 +25,10 @@
             Style="{StaticResource PrimaryButton}"
             IsEnabled="False"/>
 
+            <Label
+    Text="This is a body text example"
+    Style="{StaticResource BodyLabel}"
+    HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
