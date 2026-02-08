@@ -22,7 +22,8 @@
 
         <Button
             Text="Primary Button" 
-            Style="{StaticResource PrimaryButton}"/>
+            Style="{StaticResource PrimaryButton}"
+            IsEnabled="False"/>
 
     </VerticalStackLayout>
 </ContentPage>
