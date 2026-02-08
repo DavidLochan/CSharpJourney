@@ -445,6 +445,15 @@
             Value="{AppThemeBinding Light=Gray, Dark=LightGray}" />
 </Style>
 
+<Style x:Key="PrimaryButton" TargetType="Button">
+    <Setter Property="BackgroundColor"
+            Value="{AppThemeBinding Light=#5B5FC7, Dark=#7A7FFF}" />
+    <Setter Property="TextColor" Value="White" />
+    <Setter Property="CornerRadius" Value="14" />
+    <Setter Property="HeightRequest" Value="48" />
+    <Setter Property="FontAttributes" Value="Bold" />
+</Style>
+
 <Style TargetType="ContentPage">
     <Setter Property="BackgroundColor"
             Value="{AppThemeBinding Light=#F8F9FA, Dark=#1C1C1E}" />

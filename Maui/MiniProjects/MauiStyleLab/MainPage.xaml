@@ -21,7 +21,8 @@
             HorizontalOptions="Center" />
 
         <Button
-            Text="Primary Button" />
+            Text="Primary Button" 
+            Style="{StaticResource PrimaryButton}"/>
 
     </VerticalStackLayout>
 </ContentPage>
