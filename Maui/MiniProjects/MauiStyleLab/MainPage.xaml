@@ -23,7 +23,7 @@
         <Button
             Text="Primary Button" 
             Style="{StaticResource PrimaryButton}"
-            IsEnabled="False"/>
+            IsEnabled="True"/>
 
             <Label
     Text="This is a body text example"
