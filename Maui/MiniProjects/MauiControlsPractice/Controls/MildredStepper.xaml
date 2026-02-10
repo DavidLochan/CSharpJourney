@@ -23,6 +23,7 @@
         HorizontalTextAlignment="Center"
         VerticalOptions="Center"
         HorizontalOptions="Center"
+        Keyboard="Numeric"
         TextChanged="ValueEntry_TextChanged" />
 
 
