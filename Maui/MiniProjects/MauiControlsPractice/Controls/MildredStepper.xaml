@@ -22,7 +22,9 @@
         FontSize="42"
         HorizontalTextAlignment="Center"
         VerticalOptions="Center"
-        HorizontalOptions="Center" />
+        HorizontalOptions="Center"
+        TextChanged="ValueEntry_TextChanged" />
+
 
     <Button
         x:Name="PlusButton"
