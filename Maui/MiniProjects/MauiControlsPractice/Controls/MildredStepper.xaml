@@ -4,16 +4,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MauiControlsPractice.Controls.MildredStepper">
 
-    <Grid ColumnDefinitions="50,120,50"
+   <Grid ColumnDefinitions="50,120,50"
       HorizontalOptions="Center"
       VerticalOptions="Center">
 
     <Button
+        x:Name="MinusButton"
         Grid.Column="0"
         Text="-"
-        MinimumWidthRequest="50" />
+        MinimumWidthRequest="50" 
+        Clicked="MinusButton_Clicked"/>
 
     <Entry
+        x:Name="ValueEntry"
         Grid.Column="1"
         Text="0"
         FontSize="42"
@@ -22,9 +25,11 @@
         HorizontalOptions="Center" />
 
     <Button
+        x:Name="PlusButton"
         Grid.Column="2"
         Text="+"
-        MinimumWidthRequest="50" />
+        MinimumWidthRequest="50" 
+        Clicked="PlusButton_Clicked"/>
 
 </Grid>
 
