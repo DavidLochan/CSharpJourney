@@ -14,7 +14,6 @@ public partial class MildredStepper : ContentView
         get => (int)GetValue(ValueProperty);
         set => SetValue(ValueProperty, value);
     }
-    private int _value;
 
     public MildredStepper()
 {
@@ -23,12 +22,12 @@ public partial class MildredStepper : ContentView
     ValueEntry.Text = Value.ToString();
 }
 
-   private void MinusButton_Clicked(object sender, EventArgs e)
+  private void MinusButton_Clicked(object sender, EventArgs e)
 {
-    if (_value > 0)
+    if (Value > 0)
     {
-        _value--;
-        ValueEntry.Text = _value.ToString();
+        Value--;
+        ValueEntry.Text = Value.ToString();
     }
 }
 
@@ -44,16 +43,16 @@ public partial class MildredStepper : ContentView
     {
         if (parsedValue >= 0)
         {
-            _value = parsedValue;
+            Value = parsedValue;
         }
         else
         {
-            ValueEntry.Text = _value.ToString();
+            ValueEntry.Text = Value.ToString();
         }
     }
     else
     {
-        ValueEntry.Text = _value.ToString();
+        ValueEntry.Text = Value.ToString();
     }
 }
 }
