@@ -33,10 +33,10 @@ public partial class MildredStepper : ContentView
 }
 
     private void PlusButton_Clicked(object sender, EventArgs e)
-    {
-        _value++;
-        ValueEntry.Text = _value.ToString();
-    }
+{
+    Value++;
+    ValueEntry.Text = Value.ToString();
+}
 
     private void ValueEntry_TextChanged(object sender, TextChangedEventArgs e)
 {
