@@ -25,8 +25,20 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
-                <controls:MildredStepper Value="{Binding Count, Mode=TwoWay}" />
+                <controls:MildredStepper
+    Value="{Binding Count, Mode=TwoWay}">
 
+    <controls:MildredStepper.Triggers>
+        <DataTrigger
+            TargetType="controls:MildredStepper"
+            Binding="{Binding Count}"
+            Value="0">
+            <Setter Property="IsEnabled"
+                    Value="False" />
+        </DataTrigger>
+    </controls:MildredStepper.Triggers>
+
+</controls:MildredStepper>
 
             <Button
                 x:Name="CounterBtn"
