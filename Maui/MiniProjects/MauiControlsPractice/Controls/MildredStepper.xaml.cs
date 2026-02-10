@@ -17,11 +17,11 @@ public partial class MildredStepper : ContentView
     private int _value;
 
     public MildredStepper()
-    {
-        InitializeComponent();
-        _value = 0;
-        ValueEntry.Text = _value.ToString();
-    }
+{
+    InitializeComponent();
+    Value = 0;
+    ValueEntry.Text = Value.ToString();
+}
 
    private void MinusButton_Clicked(object sender, EventArgs e)
 {
