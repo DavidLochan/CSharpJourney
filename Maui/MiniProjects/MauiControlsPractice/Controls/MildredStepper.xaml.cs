@@ -15,6 +15,28 @@ public partial class MildredStepper : ContentView
         set => SetValue(ValueProperty, value);
     }
 
+    public static new readonly BindableProperty IsEnabledProperty =
+    BindableProperty.Create(
+        nameof(IsEnabled),
+        typeof(bool),
+        typeof(MildredStepper),
+        true,
+        propertyChanged: OnIsEnabledChanged);
+
+        private static void OnIsEnabledChanged(
+    BindableObject bindable,
+    object oldValue,
+    object newValue)
+{
+    if (bindable is MildredStepper stepper)
+    {
+        bool isEnabled = (bool)newValue;
+
+        stepper.ValueEntry.IsEnabled = isEnabled;
+        stepper.PlusButton.IsEnabled = isEnabled;
+        stepper.MinusButton.IsEnabled = isEnabled;
+    }
+}
     public MildredStepper()
 {
     InitializeComponent();
