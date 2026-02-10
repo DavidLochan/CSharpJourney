@@ -2,6 +2,18 @@ namespace MauiControlsPractice.Controls;
 
 public partial class MildredStepper : ContentView
 {
+    public static readonly BindableProperty ValueProperty =
+        BindableProperty.Create(
+            nameof(Value),
+            typeof(int),
+            typeof(MildredStepper),
+            0);
+
+    public int Value
+    {
+        get => (int)GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
+    }
     private int _value;
 
     public MildredStepper()
