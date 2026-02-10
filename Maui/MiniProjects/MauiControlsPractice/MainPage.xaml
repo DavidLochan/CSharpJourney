@@ -25,7 +25,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
-                <controls:MildredStepper />
+                <controls:MildredStepper Value="{Binding Count, Mode=TwoWay}" />
 
 
             <Button
