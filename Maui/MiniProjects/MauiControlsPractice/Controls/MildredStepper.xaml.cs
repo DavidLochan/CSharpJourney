@@ -11,11 +11,14 @@ public partial class MildredStepper : ContentView
         ValueEntry.Text = _value.ToString();
     }
 
-    private void MinusButton_Clicked(object sender, EventArgs e)
+   private void MinusButton_Clicked(object sender, EventArgs e)
+{
+    if (_value > 0)
     {
         _value--;
         ValueEntry.Text = _value.ToString();
     }
+}
 
     private void PlusButton_Clicked(object sender, EventArgs e)
     {
