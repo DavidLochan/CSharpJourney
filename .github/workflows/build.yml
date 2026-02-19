@@ -1,4 +1,4 @@
-name: Build .NET 10 MAUI (macOS)
+name: Build .NET 10 MAUI MacCatalyst
 
 on:
   push:
@@ -17,13 +17,13 @@ jobs:
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.x
+          dotnet-version: '10.0.x'
 
       - name: Install MAUI workload
         run: dotnet workload install maui
 
-      - name: Restore
-        run: dotnet restore Maui/MiniProjects/MauiCICDDemo/MauiCICDDemo.csproj
+      - name: Restore project
+        run: dotnet restore Maui/MiniProjects/MauiICDDemo/MauiICDDemo.csproj
 
-      - name: Build MacCatalyst
-        run: dotnet build Maui/MiniProjects/MauiCICDDemo/MauiCICDDemo.csproj -f net10.0-maccatalyst -c Release --no-restore
+      - name: Validate project (no packaging)
+        run: dotnet build Maui/MiniProjects/MauiICDDemo/MauiICDDemo.csproj -f net10.0-maccatalyst --no-restore
