@@ -23,7 +23,7 @@ jobs:
         run: dotnet workload install maui
 
       - name: Restore project
-        run: dotnet restore Maui/MiniProjects/MauiICDDemo/MauiICDDemo.csproj
+        run: dotnet restore Maui/MiniProjects/MauiCICDDemo/MauiICDDemo.csproj
 
       - name: Validate project (no packaging)
-        run: dotnet build Maui/MiniProjects/MauiICDDemo/MauiICDDemo.csproj -f net10.0-maccatalyst --no-restore
+        run: dotnet build Maui/MiniProjects/MauiCICDDemo/MauiICDDemo.csproj -f net10.0-maccatalyst --no-restore
